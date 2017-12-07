@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,7 @@ namespace EmergencyAccount.Model
         /// 属性: 
         /// </summary>
         [Column("Id")]
+        [Key]
         [Description("")]
         public string Id
         {

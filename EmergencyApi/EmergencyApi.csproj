@@ -102,6 +102,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Framework\DependencyRegister.cs" />
     <Compile Include="Framework\EmergencyException.cs" />
     <Compile Include="Framework\EmergencyPrincipal.cs" />
@@ -139,6 +140,10 @@
     <ProjectReference Include="..\EmergencyBaseService\EmergencyBaseService.csproj">
       <Project>{656934A5-0D85-4810-A85B-510181576014}</Project>
       <Name>EmergencyBaseService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmergencyCompany\EmergencyCompany.csproj">
+      <Project>{6ED160F3-7AB2-468E-AF48-1608F139F927}</Project>
+      <Name>EmergencyCompany</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
