@@ -25,6 +25,7 @@ namespace EmergencyApi.App_Start
                    .ForMember(x => x.Tel, y => y.MapFrom(z => z.Tel))
                    .ForMember(x => x.IsLock, y => y.MapFrom(z => z.IsLock))
                    .ForMember(x => x.Level, y => y.MapFrom(z => z.Level))
+                   .ForMember(x => x.AddTime, y => y.MapFrom(z => z.AddTime))
                    .ForAllOtherMembers(x => x.Ignore());
             }
             );
