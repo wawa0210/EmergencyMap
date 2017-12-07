@@ -15,6 +15,7 @@ namespace EmergencyApi.App_Start
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<TableAccountManager, EntityAccountManager>()
+                   .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                    .ForMember(x => x.RoleId, y => y.MapFrom(z => z.RoleId))
                    .ForMember(x => x.DeptId, y => y.MapFrom(z => z.DeptId))
                    .ForMember(x => x.UserPwd, y => y.MapFrom(z => z.UserPwd))

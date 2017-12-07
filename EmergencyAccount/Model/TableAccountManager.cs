@@ -13,7 +13,7 @@ namespace EmergencyAccount.Model
     {
         #region 私有成员
         //在这里设置字段的默认值
-        private int _Id;
+        private string _Id;
         private int _RoleId;
         private int _DeptId;
         private string _UserName = string.Empty;
@@ -36,7 +36,7 @@ namespace EmergencyAccount.Model
         /// <summary>
         /// 全参数构造函数
         /// </summary>
-        public TableAccountManager(int Id, int RoleId, int DeptId, string UserName, string UserPwd, string UserSalt, string RealName, string Tel, int IsLock, int Level, DateTime? AddTime)
+        public TableAccountManager(string Id, int RoleId, int DeptId, string UserName, string UserPwd, string UserSalt, string RealName, string Tel, int IsLock, int Level, DateTime? AddTime)
         {
             _Id = Id;
             _RoleId = RoleId;
@@ -60,7 +60,7 @@ namespace EmergencyAccount.Model
         /// </summary>
         [Column("Id")]
         [Description("")]
-        public int Id
+        public string Id
         {
             get
             {
