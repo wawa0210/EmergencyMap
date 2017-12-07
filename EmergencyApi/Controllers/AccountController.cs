@@ -1,4 +1,5 @@
 ﻿using EmergencyAccount.Application;
+using EmergencyApi.Framework;
 using EmergencyApi.Models;
 using System;
 using System.Collections.Generic;
@@ -25,27 +26,16 @@ namespace EmergencyApi.Controllers
         }
 
         /// <summary>
-        /// 获得token 登录
+        /// 根据用户编号获得用户详细信息
         /// </summary>
         /// <returns></returns>
-        [HttpPost, HttpOptions]
-        [AllowAnonymous]
-        [Route("token")]
-        public ResponseModel GetAccountInfo(string Id)
+        [HttpGet, HttpOptions]
+        [Route("{userId}")]
+        public ResponseModel GetAccountInfo(string userId)
         {
-            //var result = IAccountService.GetAccountManager(loginModel.UserName);
-
-            //if (result == null) return Fail(ErrorCodeEnum.UserIsNull);
-
-            //var checkResult = IAccountService.CheckLoginInfo(loginModel.UserPwd, result.UserSalt, result.UserPwd);
-            //if (!checkResult) return Fail(ErrorCodeEnum.UserPwdCheckFaild);
-
-            //return Success(new
-            //{
-            //    token = AesHelper.Encrypt(JsonConvert.SerializeObject(result)),
-            //    userInfo = result
-            //});
-            return null;
+            if (string.IsNullOrEmpty(userId)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+            var result = IAccountService.GetAccountManagerInfo(userId);
+            return Success(result);
         }
     }
 }

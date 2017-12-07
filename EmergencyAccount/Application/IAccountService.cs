@@ -12,6 +12,9 @@ namespace EmergencyAccount.Application
 
         EntityAccountManager GetAccountManager(string userName);
 
+
+        EntityAccountManager GetAccountManagerInfo(string useId);
+
         /// <summary>
         /// 校验登录密码是否正确
         /// </summary>

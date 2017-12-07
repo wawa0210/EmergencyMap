@@ -28,5 +28,13 @@ namespace EmergencyAccount.Application
 
             return Mapper.Map<TableAccountManager, EntityAccountManager>(restult);
         }
+
+        public EntityAccountManager GetAccountManagerInfo(string useId)
+        {
+            var orderPayRep = GetRepositoryInstance<TableAccountManager>();
+            var restult = orderPayRep.Find(x => x.Id == useId);
+
+            return Mapper.Map<TableAccountManager, EntityAccountManager>(restult);
+        }
     }
 }

@@ -39,9 +39,6 @@ namespace EmergencyApi.Framework
             };
 
             var token = request.SingleOrDefault(x => x.Key.ToLower() == "token");
-            var oAppkey = request.SingleOrDefault(x => x.Key.ToLower() == "appkey");
-            var strAppkey = oAppkey.Key == null ? string.Empty : oAppkey.Value.FirstOrDefault();
-
             var userContext = new EntityAccountManager();
 
 
