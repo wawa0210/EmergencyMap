@@ -12,6 +12,38 @@ namespace EmergencyCompany.Model
     [Table("[T_Company]")]
     public class TableCompany
     {
+
+        public TableCompany()
+        {
+            CompanyName = "";
+            Provice = "";
+            City = "";
+            County = "";
+            AddressDetail = "";
+            Longitude = "";
+            Latitude = "";
+            Industry = "";
+            Economy = "";
+            CompanyDetail = "";
+            ZipCode = "";
+            FoundedTime = DateTime.Now;
+            IssureTime = DateTime.Now;
+            IndustryCode = "";
+            Owner = "";
+            CompanyScale = "";
+            CompanyIncome = 0M;
+            ChiefSafeyName = "";
+            ChiefSafeyPhone = "";
+            ViceSafeyName = "";
+            ViceSafeyPhone = "";
+            OnDutyPhone = "";
+            EmergencyPhone = "";
+            CompanyProductDetail = "";
+            CreateTime = DateTime.Now;
+            Memo = "";
+            RiskLevel = 3;
+        }
+
         /// <summary>
         /// 属性: 
         /// </summary>
@@ -170,6 +202,137 @@ namespace EmergencyCompany.Model
         [Column("Owner")]
         [Description("")]
         public string Owner
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 企业规模
+        /// </summary>
+        [Column("CompanyScale")]
+        [Description("")]
+        public string CompanyScale
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 企业营业收入
+        /// </summary>
+        [Column("CompanyIncome")]
+        [Description("")]
+        public decimal CompanyIncome
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 分管安全负责人
+        /// </summary>
+        [Column("ChiefSafeyName")]
+        [Description("")]
+        public string ChiefSafeyName
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 分管安全负责人电话
+        /// </summary>
+        [Column("ChiefSafeyPhone")]
+        [Description("")]
+        public string ChiefSafeyPhone
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 安全生产管理机构负责人
+        /// </summary>
+        [Column("ViceSafeyName")]
+        [Description("")]
+        public string ViceSafeyName
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 安全生产管理机构负责人电话
+        /// </summary>
+        [Column("ViceSafeyPhone")]
+        [Description("")]
+        public string ViceSafeyPhone
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 安全值班电话
+        /// </summary>
+        [Column("OnDutyPhone")]
+        [Description("")]
+        public string OnDutyPhone
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 应急资讯电话
+        /// </summary>
+        [Column("EmergencyPhone")]
+        [Description("")]
+        public string EmergencyPhone
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 主要产品及生产规模
+        /// </summary>
+        [Column("CompanyProductDetail")]
+        [Description("")]
+        public string CompanyProductDetail
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 插入时间
+        /// </summary>
+        [Column("CreateTime")]
+        [Description("")]
+        public DateTime CreateTime
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [Column("Memo")]
+        [Description("")]
+        public string Memo
+        {
+            get; set;
+        }
+
+
+        /// <summary>
+        /// 当前状态
+        /// </summary>
+        [Column("Status")]
+        [Description("")]
+        public int? Status
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 风险级别 1，2，3 默认为3
+        /// </summary>
+        [Column("RiskLevel")]
+        [Description("")]
+        public int RiskLevel
         {
             get; set;
         }
