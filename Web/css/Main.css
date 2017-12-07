@@ -1,0 +1,226 @@
+﻿body
+{
+    color: #000;
+    font-size: 12px;
+    font-family: "Helvetica Neue" ,Helvetica,STheiti,微软雅黑,宋体,Arial,Tahoma,sans-serif,serif;
+}
+/*左侧菜单*/
+.sidebar-menu
+{
+    border-right: 1px solid #d6d4d5;
+}
+/*一级菜单*/
+.menu-first
+{
+    height: 45px;
+    line-height: 45px;
+    background-color: #E7F3F5;
+    color:Black;
+    border-top: 1px solid #efefef;
+    border-bottom: 5px solid #FFFFFF;
+    padding: 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+}
+/*一级菜单鼠标划过状态*/
+.menu-first:hover
+{
+    text-decoration: none;
+    background-color: #d6d4d5;
+    border-top: 1px solid #b7b7b7;
+    border-bottom: 1px solid #acacac;
+}
+/*二级菜单*/
+.menu-second li a
+{
+    background-color: #f6f6f6;
+    height: 31px;
+    line-height: 31px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+    text-align: center;
+}
+/*二级菜单鼠标划过样式*/
+.menu-second li a:hover
+{
+    text-decoration: none;
+    background-color: #66c3ec;
+    border-top: 1px solid #83ceed;
+    border-bottom: 1px solid #83ceed;
+    border-left: 3px solid #66c3ec;
+}
+/*二级菜单选中状态*/
+.menu-second-selected
+{
+    background-color: #66c3ec;
+    height: 31px;
+    line-height: 31px;
+    border-top: 1px solid #83ceed;
+    border-bottom: 1px solid #83ceed;
+    border-right: 3px solid #f8881c;
+    border-left: 3px solid #66c3ec;
+    text-align: center;
+}
+/*覆盖bootstrap的样式*/
+.nav-list, .nav-list li a
+{
+    padding: 0;
+    margin: 0;
+}
+/*Div 样式*/
+.Div_Top
+{
+    width: 100%;
+    height: 150px;
+}
+.Div_Main
+{
+    border-color: #FF0000;
+    border: 3px solider #FF0066;
+    width: 100%;
+    height: 600px;
+    margin-bottom: 30px;
+    margin-left: 0;
+}
+.Div_Right
+{
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    width: 82.8%;
+    padding-right: 0;
+}
+
+/***********************************************************************/
+/*右边顶部导航栏*/
+.Div_RTop
+{
+    height: 40px;
+}
+.Div_Rnav
+{
+    
+    padding-right: 5px;
+    margin-right:10px;
+    padding-left: 68%;
+    display: block;
+    width:300px;
+}
+.Div_Sys 
+{
+    padding-left:50px;
+    padding-top:8px;
+    width:300px;
+    display: inline;
+    float:left;
+    color: White;
+    letter-spacing:6px;
+}
+.icon-info
+{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    margin-left: 20px;
+    background: url(../style/skin_icons.png) no-repeat 0 -429px;
+}
+.Div_Rnav .icon-info span
+{
+    display: block;
+    padding: 3px;
+    padding-right: 50px;
+    padding-left:10px;
+    color: #ebebeb;
+    font-size: 12px;
+    line-height: 1.2em;
+}
+.Div_Lnav .icon-option
+{
+    position: relative;
+    display: block;
+    cursor: pointer;
+    float: right;
+    padding: 0 20px;
+    height: 40px;
+}
+.Div_Lnav .icon-option i
+{
+    display: block;
+    width: 20px;
+    height: 40px;
+    background: url(../style/skin_icons.png) -199px -305px no-repeat;
+}
+.Div_Lnav .icon-option:hover
+{
+    /*background: #7EBEDA;*/
+}
+.Div_Lnav .icon-option:hover .drop-box
+{
+    display: block;
+}
+/*右边导航菜单项*/
+.drop-box
+{
+    display: none;
+    position: absolute;
+    top: 42px;
+    right: 1px;
+}
+.drop-box .arrow
+{
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 15px;
+    width: 21px;
+    height: 11px;
+    text-indent: -999999px;
+    background: url(../style/skin_icons.png) no-repeat 0 -356px;
+}
+.drop-box .drop-item
+{
+    margin-top: 10px;
+    list-style-type: none;
+    padding: 10px;
+    border: 1px solid #b1b1b1;
+    background: #fff;
+    box-shadow: 0 0 4px 0 #000000;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.drop-box .drop-item li a
+{
+    display: block;
+    padding: 8px 15px;
+    color: #222;
+    font-size: 12px;
+    line-height: 1em;
+    text-align: center;
+    white-space: nowrap;
+}
+.drop-box .drop-item li a:hover
+{
+    color: #fff;
+    text-decoration: none;
+    background: #014886;
+}
+
+.Div_Frame
+{
+    width: 100%;
+    height: 1000px;
+}
+#mainframe
+{
+    width: 100%;
+    margin-top: 5px;
+    height: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
