@@ -1,5 +1,7 @@
-﻿using EmergencyApi.Models;
+﻿using EmergencyApi.Framework;
+using EmergencyApi.Models;
 using EmergencyCompany.Application;
+using EmergencyCompany.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +25,29 @@ namespace EmergencyApi.Controllers
             ICompanyService = new CompanyService();
         }
 
+        ///// <summary>
+        ///// 获得所有企业信息
+        ///// </summary>
+        ///// <returns></returns>
+        //[HttpGet, HttpOptions]
+        //[Route("")]
+        //public async Task<ResponseModel> GetCompanyInfo()
+        //{
+        //    var result = await ICompanyService.GetAllCompanyInfo();
+        //    return Success(result);
+        //}
+
         /// <summary>
-        /// 根据用户编号获得用户详细信息
+        /// 根据搜索获得企业信息
         /// </summary>
         /// <returns></returns>
         [HttpGet, HttpOptions]
         [Route("")]
-        public async Task<ResponseModel> GetAccountInfo()
+        public async Task<ResponseModel> GetCompanyInfo([FromUri] EntityCompanySearch entityCompany)
         {
-            var result = await ICompanyService.GetAllCompanyInfo();
+            if (entityCompany == null) entityCompany = new EntityCompanySearch();
+
+            var result = await ICompanyService.GetCompanyInfo(entityCompany);
             return Success(result);
         }
     }
