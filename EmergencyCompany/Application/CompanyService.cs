@@ -60,7 +60,7 @@ namespace EmergencyCompany.Application
                                     Status ,
                                     RiskLevel
                             FROM    dbo.T_Company WITH ( NOLOCK ) where 1= 1 ");
-            if (!string.IsNullOrEmpty(entityCompany.CountryCode) && entityCompany.CountryCode!="0")
+            if (!string.IsNullOrEmpty(entityCompany.CountryCode) && entityCompany.CountryCode != "0")
             {
                 strSql.Append(" and County = @countryCode ");
             }
@@ -68,20 +68,27 @@ namespace EmergencyCompany.Application
             {
                 strSql.Append(" and CompanyName like '%' +@companyName + '%'");
             }
-            if (entityCompany.RiskLevel!=0)
+            if (entityCompany.RiskLevel != 0)
             {
                 strSql.Append(" and RiskLevel = @riskLevel ");
             }
 
             var paras = new DynamicParameters(new
             {
-                countryCode= entityCompany.CountryCode,
+                countryCode = entityCompany.CountryCode,
                 companyName = entityCompany.CompanyName,
                 riskLevel = entityCompany.RiskLevel,
             });
 
             var restult = companyRep.FindAll(new SqlQuery(strSql.ToString(), paras)).ToList();
 
+            return restult;
+        }
+
+        public async Task<TableCompany> GetCompanyInfo(string id)
+        {
+            var companyRep = GetRepositoryInstance<TableCompany>();
+            var restult = companyRep.Find(x => x.Id == id);
             return restult;
         }
     }

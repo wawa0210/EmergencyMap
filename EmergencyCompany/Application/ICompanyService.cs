@@ -14,5 +14,7 @@ namespace EmergencyCompany.Application
 
 
         Task<List<TableCompany>> GetCompanyInfo(EntityCompanySearch entityCompany);
+
+        Task<TableCompany> GetCompanyInfo(string id);
     }
 }
