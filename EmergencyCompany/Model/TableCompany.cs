@@ -17,8 +17,11 @@ namespace EmergencyCompany.Model
         {
             CompanyName = "";
             Provice = "";
+            ProvCode = "";
             City = "";
+            CityCode = "";
             County = "";
+            CountyCode = "";
             AddressDetail = "";
             Longitude = "";
             Latitude = "";
@@ -74,7 +77,15 @@ namespace EmergencyCompany.Model
         {
             get; set;
         }
-
+        /// <summary>
+        /// 省编号
+        /// </summary>
+        [Column("ProvCode")]
+        [Description("")]
+        public string ProvCode
+        {
+            get; set;
+        }
         /// <summary>
         /// 市 
         /// </summary>
@@ -84,7 +95,15 @@ namespace EmergencyCompany.Model
         {
             get; set;
         }
-
+        /// <summary>
+        /// 市 编号
+        /// </summary>
+        [Column("CityCode")]
+        [Description("")]
+        public string CityCode
+        {
+            get; set;
+        }
         /// <summary>
         /// 县区
         /// </summary>
@@ -94,7 +113,15 @@ namespace EmergencyCompany.Model
         {
             get; set;
         }
-
+        /// <summary>
+        /// 县区编号
+        /// </summary>
+        [Column("CountyCode")]
+        [Description("")]
+        public string CountyCode
+        {
+            get; set;
+        }
         /// <summary>
         /// 详细地址
         /// </summary>

@@ -30,39 +30,41 @@ namespace EmergencyCompany.Application
             var companyRep = GetRepositoryInstance<TableCompany>();
 
             var strSql = new StringBuilder();
-            strSql.Append(@"SELECT  Id ,
-                                    CompanyName ,
-                                    Provice ,
-                                    City ,
-                                    County ,
-                                    AddressDetail ,
-                                    Longitude ,
-                                    Latitude ,
-                                    Industry ,
-                                    Economy ,
-                                    CompanyDetail ,
-                                    ZipCode ,
-                                    FoundedTime ,
-                                    IssureTime ,
-                                    IndustryCode ,
-                                    Owner ,
-                                    CompanyScale ,
-                                    CompanyIncome ,
-                                    ChiefSafeyName ,
-                                    ChiefSafeyPhone ,
-                                    ViceSafeyName ,
-                                    ViceSafeyPhone ,
-                                    OnDutyPhone ,
-                                    EmergencyPhone ,
-                                    CompanyProductDetail ,
-                                    CreateTime ,
-                                    Memo ,
-                                    Status ,
-                                    RiskLevel
-                            FROM    dbo.T_Company WITH ( NOLOCK ) where 1= 1 ");
+            strSql.Append(@"SELECT Id ,
+                                   CompanyName ,
+                                   Provice ,
+                                   City ,
+                                   County ,
+                                   AddressDetail ,
+                                   Longitude ,
+                                   Latitude ,
+                                   Industry ,
+                                   Economy ,
+                                   CompanyDetail ,
+                                   ZipCode ,
+                                   FoundedTime ,
+                                   IssureTime ,
+                                   IndustryCode ,
+                                   Owner ,
+                                   CompanyScale ,
+                                   CompanyIncome ,
+                                   ChiefSafeyName ,
+                                   ChiefSafeyPhone ,
+                                   ViceSafeyName ,
+                                   ViceSafeyPhone ,
+                                   OnDutyPhone ,
+                                   EmergencyPhone ,
+                                   CompanyProductDetail ,
+                                   CreateTime ,
+                                   Memo ,
+                                   Status ,
+                                   RiskLevel ,
+                                   ProvCode ,
+                                   CityCode ,
+                                   CountyCode FROM T_Company WITH ( NOLOCK ) where 1= 1 ");
             if (!string.IsNullOrEmpty(entityCompany.CountryCode) && entityCompany.CountryCode != "0")
             {
-                strSql.Append(" and County = @countryCode ");
+                strSql.Append(" and CountyCode = @countryCode ");
             }
             if (!string.IsNullOrEmpty(entityCompany.CompanyName))
             {
