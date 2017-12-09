@@ -204,6 +204,44 @@ namespace EmergencyCompany.Application
             companyRep.Insert(model);
         }
 
+        public async Task UpdateCompanyInfo(EntityCompany entity)
+        {
+            var model = Mapper.Map<EntityCompany, TableCompany>(entity);
+            model.Id = entity.Id;
+            var companyRep = GetRepositoryInstance<TableCompany>();
+
+            companyRep.Update<TableCompany>(model, companyInfo => new
+            {
+                companyInfo.CompanyName,
+                companyInfo.Provice,
+                companyInfo.ProvCode,
+                companyInfo.City,
+                companyInfo.CityCode,
+                companyInfo.County,
+                companyInfo.CountyCode,
+                companyInfo.AddressDetail,
+                companyInfo.Longitude,
+                companyInfo.Latitude,
+                companyInfo.Industry,
+                companyInfo.Economy,
+                companyInfo.CompanyDetail,
+                companyInfo.ZipCode,
+                companyInfo.FoundedTime,
+                companyInfo.IssureTime,
+                companyInfo.IndustryCode,
+                companyInfo.Owner,
+                companyInfo.CompanyScale,
+                companyInfo.CompanyIncome,
+                companyInfo.ChiefSafeyName,
+                companyInfo.ChiefSafeyPhone,
+                companyInfo.ViceSafeyName,
+                companyInfo.ViceSafeyPhone,
+                companyInfo.OnDutyPhone,
+                companyInfo.EmergencyPhone,
+                companyInfo.RiskLevel
+            });
+        }
+
         private string GetCompanyId()
         {
             return Guid.NewGuid().ToString("N");

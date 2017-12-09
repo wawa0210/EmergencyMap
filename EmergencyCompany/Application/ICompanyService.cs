@@ -18,6 +18,8 @@ namespace EmergencyCompany.Application
 
         Task InsertCompanyInfo(EntityCompany entity);
 
+        Task UpdateCompanyInfo(EntityCompany entity);
+
         Task<TableCompany> GetCompanyInfo(string id);
 
         Task<TableCompany> GetCompanyInfoByName(string companyName);

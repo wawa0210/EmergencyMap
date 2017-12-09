@@ -27,6 +27,14 @@ namespace EmergencyCompany.Entity
         }
 
         /// <summary>
+        /// 企业编号
+        /// </summary>
+        public string Id
+        {
+            get;
+            set;
+        }
+        /// <summary>
         /// 公司名称 
         /// </summary>
         public string CompanyName
@@ -37,7 +45,7 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 省 
         /// </summary>
-        [Required(ErrorMessage ="省不能为空")]
+        [Required(ErrorMessage = "省不能为空")]
         public string Provice
         {
             get; set;
@@ -130,7 +138,7 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 公司详细描述
         /// </summary>
-        
+
         public string CompanyDetail
         {
             get; set;

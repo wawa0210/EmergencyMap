@@ -39,6 +39,20 @@ namespace EmergencyApi.Controllers
             return Success("保存成功");
         }
 
+        /// <summary>
+        /// 编辑企业信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut, HttpOptions]
+        [Route("")]
+        public async Task<ResponseModel> UpdateCompanyInfo(EntityCompany entityCompany)
+        {
+            if (string.IsNullOrEmpty(entityCompany.Id)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+
+            await ICompanyService.UpdateCompanyInfo(entityCompany);
+            return Success("保存成功");
+        }
+
         ///// <summary>
         ///// 获得所有企业信息
         ///// </summary>
