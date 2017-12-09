@@ -145,6 +145,10 @@
       <Project>{6ED160F3-7AB2-468E-AF48-1608F139F927}</Project>
       <Name>EmergencyCompany</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EmergencyEntity\EmergencyEntity.csproj">
+      <Project>{916C34C1-D52C-4340-BDF0-2F3C2569E696}</Project>
+      <Name>EmergencyEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

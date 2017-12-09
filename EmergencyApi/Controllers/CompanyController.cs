@@ -64,5 +64,20 @@ namespace EmergencyApi.Controllers
             var result = await ICompanyService.GetCompanyInfo(id);
             return Success(result);
         }
+
+
+        /// <summary>
+        /// 根据搜索获得企业信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, HttpOptions]
+        [Route("pageinfo")]
+        public async Task<ResponseModel> GetPageCompanyInfo([FromUri] EntityCompanyPageQuery companyPageQuery)
+        {
+            if (companyPageQuery == null) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+
+            var result = await ICompanyService.GetPageCompanyInfo(companyPageQuery);
+            return Success(result);
+        }
     }
 }

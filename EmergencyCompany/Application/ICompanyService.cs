@@ -1,5 +1,6 @@
 ﻿using EmergencyCompany.Entity;
 using EmergencyCompany.Model;
+using EmergencyEntity.PageQuery;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace EmergencyCompany.Application
         Task<List<TableCompany>> GetCompanyInfo(EntityCompanySearch entityCompany);
 
         Task<TableCompany> GetCompanyInfo(string id);
+
+        Task<PageBase<TableCompany>> GetPageCompanyInfo(EntityCompanyPageQuery companyPageQuery);
     }
 }
