@@ -146,6 +146,29 @@ namespace EmergencyCompany.Model
         }
 
         /// <summary>
+        /// 专家建议
+        /// </summary>
+        [Column("ExpertOpinion")]
+        [Description("")]
+        public string ExpertOpinion
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 管控预案
+        /// </summary>
+        [Column("ManagementPlan")]
+        [Description("")]
+        public string ManagementPlan
+        {
+            get;
+            set;
+        }
+
+
+        /// <summary>
         /// 描述
         /// </summary>
         [Column("Memo")]

@@ -38,7 +38,9 @@ namespace EmergencyCompany.Application
                     dangerousProduct.Un,
                     dangerousProduct.IsToxicity,
                     dangerousProduct.Instructions,
-                    dangerousProduct.Memo
+                    dangerousProduct.Memo,
+                    dangerousProduct.ExpertOpinion,
+                    dangerousProduct.ManagementPlan
                 });
         }
 

@@ -66,6 +66,8 @@ namespace EmergencyApi.App_Start
 
                 cfg.CreateMap<EntityDangerousProduct, TableDangerousProduct>()
                    .ForMember(x => x.RegesterId, y => y.MapFrom(z => z.RegesterId))
+                   .ForMember(x => x.ExpertOpinion, y => y.MapFrom(z => z.ExpertOpinion))
+                   .ForMember(x => x.ManagementPlan, y => y.MapFrom(z => z.ManagementPlan))
                    .ForMember(x => x.CompanyId, y => y.MapFrom(z => z.CompanyId))
                    .ForMember(x => x.ProductName, y => y.MapFrom(z => z.ProductName))
                    .ForMember(x => x.AliasName, y => y.MapFrom(z => z.AliasName))
@@ -83,6 +85,8 @@ namespace EmergencyApi.App_Start
 
                 cfg.CreateMap<TableDangerousProduct, EntityDangerousProduct>()
                .ForMember(x => x.RegesterId, y => y.MapFrom(z => z.RegesterId))
+               .ForMember(x => x.ExpertOpinion, y => y.MapFrom(z => z.ExpertOpinion))
+               .ForMember(x => x.ManagementPlan, y => y.MapFrom(z => z.ManagementPlan))
                .ForMember(x => x.CompanyId, y => y.MapFrom(z => z.CompanyId))
                .ForMember(x => x.ProductName, y => y.MapFrom(z => z.ProductName))
                .ForMember(x => x.AliasName, y => y.MapFrom(z => z.AliasName))

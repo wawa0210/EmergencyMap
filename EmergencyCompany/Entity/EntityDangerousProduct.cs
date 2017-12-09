@@ -127,6 +127,20 @@ namespace EmergencyCompany.Entity
             set;
         }
 
+        [Required(ErrorMessage = "专家建议不能为空")]
+        public string ExpertOpinion
+        {
+            get;
+            set;
+        }
+
+        [Required(ErrorMessage = "管理预案不能为空")]
+        public string ManagementPlan
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 描述
         /// </summary>
@@ -151,5 +165,6 @@ namespace EmergencyCompany.Entity
             get;
             set;
         }
+
     }
 }
