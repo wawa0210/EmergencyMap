@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using EmergencyAccount.Etity;
 using EmergencyAccount.Model;
+using EmergencyCompany.Entity;
+using EmergencyCompany.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,40 @@ namespace EmergencyApi.App_Start
                    .ForMember(x => x.Level, y => y.MapFrom(z => z.Level))
                    .ForMember(x => x.AddTime, y => y.MapFrom(z => z.AddTime))
                    .ForAllOtherMembers(x => x.Ignore());
+
+                cfg.CreateMap<EntityCompany, TableCompany>()
+                    .ForMember(x => x.CompanyName, y => y.MapFrom(x => x.CompanyName))
+                    .ForMember(x => x.Provice, y => y.MapFrom(x => x.Provice))
+                    .ForMember(x => x.ProvCode, y => y.MapFrom(x => x.ProvCode))
+                    .ForMember(x => x.City, y => y.MapFrom(x => x.City))
+                    .ForMember(x => x.CityCode, y => y.MapFrom(x => x.CityCode))
+                    .ForMember(x => x.County, y => y.MapFrom(x => x.County))
+                    .ForMember(x => x.CountyCode, y => y.MapFrom(x => x.CountyCode))
+                    .ForMember(x => x.AddressDetail, y => y.MapFrom(x => x.AddressDetail))
+                    .ForMember(x => x.Longitude, y => y.MapFrom(x => x.Longitude))
+                    .ForMember(x => x.Latitude, y => y.MapFrom(x => x.Latitude))
+                    .ForMember(x => x.Industry, y => y.MapFrom(x => x.Industry))
+                    .ForMember(x => x.Economy, y => y.MapFrom(x => x.Economy))
+                    .ForMember(x => x.CompanyDetail, y => y.MapFrom(x => x.CompanyDetail))
+                    .ForMember(x => x.ZipCode, y => y.MapFrom(x => x.ZipCode))
+                    .ForMember(x => x.FoundedTime, y => y.MapFrom(x => x.FoundedTime))
+                    .ForMember(x => x.IssureTime, y => y.MapFrom(x => x.IssureTime))
+                    .ForMember(x => x.IndustryCode, y => y.MapFrom(x => x.IndustryCode))
+                    .ForMember(x => x.Owner, y => y.MapFrom(x => x.Owner))
+                    .ForMember(x => x.CompanyScale, y => y.MapFrom(x => x.CompanyScale))
+                    .ForMember(x => x.CompanyIncome, y => y.MapFrom(x => x.CompanyIncome))
+                    .ForMember(x => x.ChiefSafeyName, y => y.MapFrom(x => x.ChiefSafeyName))
+                    .ForMember(x => x.ChiefSafeyPhone, y => y.MapFrom(x => x.ChiefSafeyPhone))
+                    .ForMember(x => x.ViceSafeyName, y => y.MapFrom(x => x.ViceSafeyName))
+                    .ForMember(x => x.ViceSafeyPhone, y => y.MapFrom(x => x.ViceSafeyPhone))
+                    .ForMember(x => x.OnDutyPhone, y => y.MapFrom(x => x.OnDutyPhone))
+                    .ForMember(x => x.EmergencyPhone, y => y.MapFrom(x => x.EmergencyPhone))
+                    .ForMember(x => x.CompanyProductDetail, y => y.MapFrom(x => x.CompanyProductDetail))
+                    .ForMember(x => x.CreateTime, y => y.MapFrom(x => x.CreateTime))
+                    .ForMember(x => x.Memo, y => y.MapFrom(x => x.Memo))
+                    .ForMember(x => x.Status, y => y.MapFrom(x => x.Status))
+                    .ForMember(x => x.RiskLevel, y => y.MapFrom(x => x.RiskLevel)).
+                    ForAllOtherMembers(x => x.Ignore());
             }
             );
         }

@@ -25,6 +25,20 @@ namespace EmergencyApi.Controllers
             ICompanyService = new CompanyService();
         }
 
+        /// <summary>
+        /// 根据搜索获得企业信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, HttpOptions]
+        [Route("")]
+        public async Task<ResponseModel> AddCompanyInfo(EntityCompany entityCompany)
+        {
+            var result = ICompanyService.GetCompanyInfoByName(entityCompany.CompanyName);
+            if(result.Result!=null)  return Fail(ErrorCodeEnum.CompanyAlreadyExist);
+            await ICompanyService.InsertCompanyInfo(entityCompany);
+            return Success("保存成功");
+        }
+
         ///// <summary>
         ///// 获得所有企业信息
         ///// </summary>

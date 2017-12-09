@@ -48,7 +48,10 @@ namespace EmergencyApi.Framework
         UserIsNull = 8006,
 
         [Description("用户密码不正确")]
-        UserPwdCheckFaild = 8007
+        UserPwdCheckFaild = 8007,
+
+        [Description("企业已存在")]
+        CompanyAlreadyExist = 8008
         #endregion
 
     }

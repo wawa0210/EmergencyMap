@@ -10,6 +10,7 @@ using EmergencyData.MicroOrm.SqlGenerator;
 using Dapper;
 using EmergencyEntity.PageQuery;
 using System.Data;
+using AutoMapper;
 
 namespace EmergencyCompany.Application
 {
@@ -93,6 +94,13 @@ namespace EmergencyCompany.Application
         {
             var companyRep = GetRepositoryInstance<TableCompany>();
             var restult = companyRep.Find(x => x.Id == id);
+            return restult;
+        }
+
+        public async Task<TableCompany> GetCompanyInfoByName(string companyName)
+        {
+            var companyRep = GetRepositoryInstance<TableCompany>();
+            var restult = companyRep.Find(x => x.CompanyName == companyName);
             return restult;
         }
 
@@ -182,6 +190,23 @@ namespace EmergencyCompany.Application
             result.TotalCounts = paras.Get<int?>("totalCount") ?? 0;
             result.TotalPages = Convert.ToInt32(Math.Ceiling(result.TotalCounts / (companyPageQuery.PageSize * 1.0)));
             return result;
+        }
+
+        /// <summary>
+        /// 插入行业信息
+        /// </summary>
+        /// <param name="entity"></param>
+        public async Task InsertCompanyInfo(EntityCompany entity)
+        {
+            var model = Mapper.Map<EntityCompany, TableCompany>(entity);
+            model.Id = GetCompanyId();
+            var companyRep = GetRepositoryInstance<TableCompany>();
+            companyRep.Insert(model);
+        }
+
+        private string GetCompanyId()
+        {
+            return Guid.NewGuid().ToString("N");
         }
     }
 }
