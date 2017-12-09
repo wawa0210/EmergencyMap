@@ -1406,5 +1406,11 @@ namespace CommonLib
             return urlPage;
         }
         #endregion
+
+
+        public static string GetNewId()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
     }
 }

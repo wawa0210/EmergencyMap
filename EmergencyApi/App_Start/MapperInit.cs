@@ -63,6 +63,40 @@ namespace EmergencyApi.App_Start
                     .ForMember(x => x.Status, y => y.MapFrom(x => x.Status))
                     .ForMember(x => x.RiskLevel, y => y.MapFrom(x => x.RiskLevel)).
                     ForAllOtherMembers(x => x.Ignore());
+
+                cfg.CreateMap<EntityDangerousProduct, TableDangerousProduct>()
+                   .ForMember(x => x.RegesterId, y => y.MapFrom(z => z.RegesterId))
+                   .ForMember(x => x.CompanyId, y => y.MapFrom(z => z.CompanyId))
+                   .ForMember(x => x.ProductName, y => y.MapFrom(z => z.ProductName))
+                   .ForMember(x => x.AliasName, y => y.MapFrom(z => z.AliasName))
+                   .ForMember(x => x.ProductAttributes, y => y.MapFrom(z => z.ProductAttributes))
+                   .ForMember(x => x.Manufacturability, y => y.MapFrom(z => z.Manufacturability))
+                   .ForMember(x => x.ProductReserve, y => y.MapFrom(z => z.ProductReserve))
+                   .ForMember(x => x.YearProduct, y => y.MapFrom(z => z.YearProduct))
+                   .ForMember(x => x.Cas, y => y.MapFrom(z => z.Cas))
+                   .ForMember(x => x.Un, y => y.MapFrom(z => z.Un))
+                   .ForMember(x => x.IsToxicity, y => y.MapFrom(z => z.IsToxicity))
+                   .ForMember(x => x.Instructions, y => y.MapFrom(z => z.Instructions))
+                   .ForMember(x => x.Memo, y => y.MapFrom(z => z.Memo))
+                   .ForMember(x => x.Status, y => y.MapFrom(z => z.Status))
+                   .ForAllOtherMembers(x => x.Ignore());
+
+                cfg.CreateMap<TableDangerousProduct, EntityDangerousProduct>()
+               .ForMember(x => x.RegesterId, y => y.MapFrom(z => z.RegesterId))
+               .ForMember(x => x.CompanyId, y => y.MapFrom(z => z.CompanyId))
+               .ForMember(x => x.ProductName, y => y.MapFrom(z => z.ProductName))
+               .ForMember(x => x.AliasName, y => y.MapFrom(z => z.AliasName))
+               .ForMember(x => x.ProductAttributes, y => y.MapFrom(z => z.ProductAttributes))
+               .ForMember(x => x.Manufacturability, y => y.MapFrom(z => z.Manufacturability))
+               .ForMember(x => x.ProductReserve, y => y.MapFrom(z => z.ProductReserve))
+               .ForMember(x => x.YearProduct, y => y.MapFrom(z => z.YearProduct))
+               .ForMember(x => x.Cas, y => y.MapFrom(z => z.Cas))
+               .ForMember(x => x.Un, y => y.MapFrom(z => z.Un))
+               .ForMember(x => x.IsToxicity, y => y.MapFrom(z => z.IsToxicity))
+               .ForMember(x => x.Instructions, y => y.MapFrom(z => z.Instructions))
+               .ForMember(x => x.Memo, y => y.MapFrom(z => z.Memo))
+               .ForMember(x => x.Status, y => y.MapFrom(z => z.Status))
+               .ForAllOtherMembers(x => x.Ignore());
             }
             );
         }

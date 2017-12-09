@@ -49,18 +49,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\CompanyService.cs" />
+    <Compile Include="Application\DangerousProductService.cs" />
     <Compile Include="Application\ICompanyService.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Application\IDangerousProductService.cs" />
     <Compile Include="Entity\EntityCompany.cs" />
     <Compile Include="Entity\EntityCompanyPageQuery.cs" />
     <Compile Include="Entity\EntityCompanySearch.cs" />
+    <Compile Include="Entity\EntityDangerousProduct.cs" />
     <Compile Include="Model\TableCompany.cs" />
+    <Compile Include="Model\TableDangerousProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{E3CA0839-7A1A-43E9-8C62-524198E1F724}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EmergencyBaseService\EmergencyBaseService.csproj">
       <Project>{656934A5-0D85-4810-A85B-510181576014}</Project>
       <Name>EmergencyBaseService</Name>

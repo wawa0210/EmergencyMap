@@ -11,6 +11,7 @@ using Dapper;
 using EmergencyEntity.PageQuery;
 using System.Data;
 using AutoMapper;
+using CommonLib;
 
 namespace EmergencyCompany.Application
 {
@@ -244,7 +245,7 @@ namespace EmergencyCompany.Application
 
         private string GetCompanyId()
         {
-            return Guid.NewGuid().ToString("N");
+            return Utils.GetNewId();
         }
     }
 }
