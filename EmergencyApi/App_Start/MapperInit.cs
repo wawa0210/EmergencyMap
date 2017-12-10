@@ -65,6 +65,7 @@ namespace EmergencyApi.App_Start
                     ForAllOtherMembers(x => x.Ignore());
 
                 cfg.CreateMap<EntityDangerousProduct, TableDangerousProduct>()
+                   .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                    .ForMember(x => x.RegesterId, y => y.MapFrom(z => z.RegesterId))
                    .ForMember(x => x.ExpertOpinion, y => y.MapFrom(z => z.ExpertOpinion))
                    .ForMember(x => x.ManagementPlan, y => y.MapFrom(z => z.ManagementPlan))
@@ -84,6 +85,7 @@ namespace EmergencyApi.App_Start
                    .ForAllOtherMembers(x => x.Ignore());
 
                 cfg.CreateMap<TableDangerousProduct, EntityDangerousProduct>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                .ForMember(x => x.RegesterId, y => y.MapFrom(z => z.RegesterId))
                .ForMember(x => x.ExpertOpinion, y => y.MapFrom(z => z.ExpertOpinion))
                .ForMember(x => x.ManagementPlan, y => y.MapFrom(z => z.ManagementPlan))

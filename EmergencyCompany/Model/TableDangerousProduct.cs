@@ -17,11 +17,23 @@ namespace EmergencyCompany.Model
             Status = 1;
             CreateTime = DateTime.Now;
         }
+
+        /// <summary>
+        /// 登记号
+        /// </summary>
+        [Column("Id")]
+        [Key]
+        [Description("")]
+        public string Id
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 登记号
         /// </summary>
         [Column("RegesterId")]
-        [Key]
         [Description("")]
         public string RegesterId
         {

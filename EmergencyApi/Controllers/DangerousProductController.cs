@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace EmergencyApi.Controllers
@@ -34,7 +35,7 @@ namespace EmergencyApi.Controllers
         /// <returns></returns>
         [HttpGet, HttpOptions]
         [Route("")]
-        public ResponseModel GetAccountInfo(string companyId)
+        public ResponseModel GetDangerousProductInfo(string companyId)
         {
             if (string.IsNullOrEmpty(companyId)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
             var result = IDangerousProductService.GetDangerousProduct(companyId);
@@ -47,7 +48,7 @@ namespace EmergencyApi.Controllers
         /// <returns></returns>
         [HttpPost, HttpOptions]
         [Route("")]
-        public ResponseModel AddAccountInfo(EntityDangerousProduct entityDangerous)
+        public ResponseModel AddDangerousProductInfo(EntityDangerousProduct entityDangerous)
         {
             var result = IDangerousProductService.AddDangerousProduct(entityDangerous);
             return Success("保存成功");
@@ -59,10 +60,25 @@ namespace EmergencyApi.Controllers
         /// <returns></returns>
         [HttpPut, HttpOptions]
         [Route("")]
-        public ResponseModel EditAccountInfo(EntityDangerousProduct entityDangerous)
+        public ResponseModel EditDangerousProductInfo(EntityDangerousProduct entityDangerous)
         {
+            if(string.IsNullOrEmpty(entityDangerous.Id)) return Fail(ErrorCodeEnum.ParamsInvalid);
             var result = IDangerousProductService.EditDangerousProduct(entityDangerous);
             return Success("保存成功");
+        }
+
+        /// <summary>
+        /// 分页获得危险源信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, HttpOptions]
+        [Route("pageinfo")]
+        public async Task<ResponseModel> GetPageDangerousProductInfo([FromUri] EntityDangerousPageQuery dangerousPageQuery)
+        {
+            if (dangerousPageQuery == null) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+
+            var result = await IDangerousProductService.GetPageDangerousInfo(dangerousPageQuery);
+            return Success(result);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EmergencyCompany.Entity;
+using EmergencyEntity.PageQuery;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace EmergencyCompany.Application
         Task AddDangerousProduct(EntityDangerousProduct entityDangerous);
 
         Task EditDangerousProduct(EntityDangerousProduct entityDangerous);
+
+        Task<PageBase<EntityDangerousProduct>> GetPageDangerousInfo(EntityDangerousPageQuery dangerousPageQuery);
     }
 }

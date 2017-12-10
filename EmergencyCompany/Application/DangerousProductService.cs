@@ -8,6 +8,10 @@ using EmergencyBaseService;
 using EmergencyCompany.Model;
 using AutoMapper;
 using CommonLib;
+using EmergencyEntity.PageQuery;
+using System.Data;
+using Dapper;
+using EmergencyData.MicroOrm.SqlGenerator;
 
 namespace EmergencyCompany.Application
 {
@@ -16,7 +20,7 @@ namespace EmergencyCompany.Application
         public async Task AddDangerousProduct(EntityDangerousProduct entityDangerous)
         {
             var model = Mapper.Map<EntityDangerousProduct, TableDangerousProduct>(entityDangerous);
-            model.RegesterId = Utils.GetNewId();
+            model.Id = Utils.GetNewId();
             var dangerousProductRep = GetRepositoryInstance<TableDangerousProduct>();
             dangerousProductRep.Insert(model);
         }
@@ -28,6 +32,7 @@ namespace EmergencyCompany.Application
             dangerousProductRep.Update<TableDangerousProduct>(
                 model, dangerousProduct => new
                 {
+                    dangerousProduct.RegesterId,
                     dangerousProduct.ProductName,
                     dangerousProduct.AliasName,
                     dangerousProduct.ProductAttributes,
@@ -50,6 +55,82 @@ namespace EmergencyCompany.Application
             var restult = dangerousProductRep.FindAll(x => x.CompanyId == companyId).ToList();
             var model = Mapper.Map<List<TableDangerousProduct>, List<EntityDangerousProduct>>(restult);
             return model;
+        }
+
+        public async Task<PageBase<EntityDangerousProduct>> GetPageDangerousInfo(EntityDangerousPageQuery dangerousPageQuery)
+        {
+            var result = new PageBase<EntityDangerousProduct>
+            {
+                CurrentPage = dangerousPageQuery.CurrentPage,
+                PageSize = dangerousPageQuery.PageSize
+            };
+
+            var strSql = new StringBuilder();
+
+            //计算总数
+            strSql.Append(@"        
+                            SELECT  @totalCount = COUNT(1)
+                            FROM    dbo.T_DangerousProduct WITH ( NOLOCK ) ");
+
+            strSql.Append(" where CompanyId =@companyId ");
+            if (!string.IsNullOrEmpty(dangerousPageQuery.ProductName))
+            {
+                strSql.Append(" and  ProductName like '%' + @productName +'%' ;");
+            }
+            //分页信息
+            strSql.Append(@";SELECT * FROM (SELECT  ROW_NUMBER() OVER ( ORDER BY CreateTime DESC ) RowNumber ,
+                            Id ,
+                            CompanyId ,
+                            ProductName ,
+                            AliasName ,
+                            ProductAttributes ,
+                            Manufacturability ,
+                            ProductReserve ,
+                            YearProduct ,
+                            Cas ,
+                            Un ,
+                            IsToxicity ,
+                            Instructions ,
+                            Memo ,
+                            CreateTime ,
+                            Status ,
+                            ExpertOpinion ,
+                            ManagementPlan ,
+                            RegesterId
+                    FROM    dbo.T_DangerousProduct WITH ( NOLOCK ) ");
+
+            strSql.Append(" where CompanyId =@companyId ");
+            if (!string.IsNullOrEmpty(dangerousPageQuery.ProductName))
+            {
+                strSql.Append("  and ProductName like '%' + @productName +'%' ");
+            }
+            strSql.Append(@"
+                                   ) AS a
+                            WHERE   a.RowNumber > @startIndex
+                                    AND a.RowNumber <= @endIndex              
+                        ");
+            strSql.Append(@" order by a.RowNumber ");
+
+            var paras = new DynamicParameters(new
+            {
+                companyId = dangerousPageQuery.CompanyId,
+                productName = dangerousPageQuery.ProductName,
+                startIndex = (dangerousPageQuery.CurrentPage - 1) * dangerousPageQuery.PageSize,
+                endIndex = dangerousPageQuery.CurrentPage * dangerousPageQuery.PageSize
+            });
+            var dangerousProductRep = GetRepositoryInstance<TableDangerousProduct>();
+
+            paras.Add("totalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            var sqlQuery = new SqlQuery(strSql.ToString(), paras);
+
+            var listResult = dangerousProductRep.FindAll(sqlQuery).ToList();
+
+            result.Items = Mapper.Map<List<TableDangerousProduct>, List<EntityDangerousProduct>>(listResult);
+
+            result.TotalCounts = paras.Get<int?>("totalCount") ?? 0;
+            result.TotalPages = Convert.ToInt32(Math.Ceiling(result.TotalCounts / (dangerousPageQuery.PageSize * 1.0)));
+
+            return result;
         }
     }
 }

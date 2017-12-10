@@ -15,6 +15,13 @@ namespace EmergencyCompany.Entity
             Memo = "";
             CreateTime = DateTime.Now;
         }
+
+        public string Id
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 登记号
         /// </summary>
