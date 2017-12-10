@@ -43,6 +43,19 @@ namespace EmergencyApi.Controllers
         }
 
         /// <summary>
+        /// 获得企业危险源信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, HttpOptions]
+        [Route("{id}")]
+        public ResponseModel GetDangerousProduct(string id)
+        {
+            if (string.IsNullOrEmpty(id)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+            var result = IDangerousProductService.GetDangerousProductInfo(id);
+            return Success(result.Result);
+        }
+
+        /// <summary>
         /// 添加企业危险源信息
         /// </summary>
         /// <returns></returns>

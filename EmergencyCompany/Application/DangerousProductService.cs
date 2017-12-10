@@ -57,6 +57,14 @@ namespace EmergencyCompany.Application
             return model;
         }
 
+        public async Task<EntityDangerousProduct> GetDangerousProductInfo(string id)
+        {
+            var dangerousProductRep = GetRepositoryInstance<TableDangerousProduct>();
+            var restult = dangerousProductRep.Find(x => x.Id == id);
+            var model = Mapper.Map<TableDangerousProduct,EntityDangerousProduct>(restult);
+            return model;
+        }
+
         public async Task<PageBase<EntityDangerousProduct>> GetPageDangerousInfo(EntityDangerousPageQuery dangerousPageQuery)
         {
             var result = new PageBase<EntityDangerousProduct>
