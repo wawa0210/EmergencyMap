@@ -119,7 +119,7 @@ namespace EmergencyCompany.Model
         /// </summary>
         [Column("Cas")]
         [Description("")]
-        public decimal Cas
+        public string Cas
         {
             get;
             set;
@@ -130,7 +130,7 @@ namespace EmergencyCompany.Model
         /// </summary>
         [Column("Un")]
         [Description("")]
-        public decimal Un
+        public string Un
         {
             get;
             set;

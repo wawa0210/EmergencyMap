@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,9 +12,20 @@ namespace EmergencyCompany.Entity
     {
         public EntityDangerousProduct()
         {
+            AliasName = "";
             Status = 1;
             Memo = "";
             CreateTime = DateTime.Now;
+            ProductAttributes = "";
+            Manufacturability = 0M;
+            ProductReserve = 0M;
+            YearProduct = 0M;
+            Cas = "";
+            Un = "";
+            Instructions = "";
+            ExpertOpinion = "";
+            ManagementPlan = "";
+            RegesterId = Utils.GetNewId();
         }
 
         public string Id
@@ -50,7 +62,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 别名
         /// </summary>
-        [Required(ErrorMessage = "别名不能为空")]
         public string AliasName
         {
             get;
@@ -60,7 +71,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 属性
         /// </summary>
-        [Required(ErrorMessage = "属性不能为空")]
         public string ProductAttributes
         {
             get;
@@ -70,7 +80,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 成产能力
         /// </summary>
-        [Required(ErrorMessage = "生产能力不能为空")]
         public decimal Manufacturability
         {
             get;
@@ -80,7 +89,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 最大储能
         /// </summary>
-        [Required(ErrorMessage = "最大储能不能为空")]
         public decimal ProductReserve
         {
             get;
@@ -90,7 +98,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 年生产量
         /// </summary>
-        [Required(ErrorMessage = "年生产量不能为空")]
         public decimal YearProduct
         {
             get;
@@ -100,8 +107,7 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// cas
         /// </summary>
-        [Required(ErrorMessage = "cas不能为空")]
-        public decimal Cas
+        public string Cas
         {
             get;
             set;
@@ -110,14 +116,12 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// un
         /// </summary>
-        [Required(ErrorMessage = "un不能为空")]
-        public decimal Un
+        public string Un
         {
             get;
             set;
         }
 
-        [Required(ErrorMessage = "毒性不能为空")]
         public int IsToxicity
         {
             get;
@@ -127,21 +131,18 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 说明书
         /// </summary>
-        [Required(ErrorMessage = "说明书不能为空")]
         public string Instructions
         {
             get;
             set;
         }
 
-        [Required(ErrorMessage = "专家建议不能为空")]
         public string ExpertOpinion
         {
             get;
             set;
         }
 
-        [Required(ErrorMessage = "管理预案不能为空")]
         public string ManagementPlan
         {
             get;
