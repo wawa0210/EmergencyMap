@@ -199,7 +199,8 @@ namespace EmergencyCompany.Application
         /// <param name="entity"></param>
         public async Task InsertCompanyInfo(EntityCompany entity)
         {
-            var model = Mapper.Map<EntityCompany, TableCompany>(entity);
+            var model = new TableCompany();
+            model = Mapper.Map<EntityCompany, TableCompany>(entity);
             model.Id = GetCompanyId();
             var companyRep = GetRepositoryInstance<TableCompany>();
             companyRep.Insert(model);
@@ -207,7 +208,8 @@ namespace EmergencyCompany.Application
 
         public async Task UpdateCompanyInfo(EntityCompany entity)
         {
-            var model = Mapper.Map<EntityCompany, TableCompany>(entity);
+            var model = new TableCompany();
+            model = Mapper.Map<EntityCompany, TableCompany>(entity);
             model.Id = entity.Id;
             var companyRep = GetRepositoryInstance<TableCompany>();
 
