@@ -12,10 +12,12 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace EmergencyApi.Controllers
 {
     [RoutePrefix("v0/auth")]
+    [EnableCors("*", "*", "*")]
     public class AuthController : BaseApiController
     {
         private IAccountService IAccountService { get; set; }
