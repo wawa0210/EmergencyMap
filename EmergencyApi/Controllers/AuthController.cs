@@ -17,7 +17,6 @@ using System.Web.Http.Cors;
 namespace EmergencyApi.Controllers
 {
     [RoutePrefix("v0/auth")]
-    [EnableCors("*", "*", "*")]
     public class AuthController : BaseApiController
     {
         private IAccountService IAccountService { get; set; }

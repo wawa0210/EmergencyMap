@@ -12,7 +12,6 @@ using System.Web.Http.ModelBinding;
 
 namespace EmergencyApi.Controllers
 {
-    [EnableCors("*", "*", "*")]
     public class BaseApiController : ApiController
     {
 
