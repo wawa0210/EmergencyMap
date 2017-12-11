@@ -57,6 +57,7 @@
     <Compile Include="Entity\EntityCompanySearch.cs" />
     <Compile Include="Entity\EntityDangerousPageQuery.cs" />
     <Compile Include="Entity\EntityDangerousProduct.cs" />
+    <Compile Include="Entity\EntityDirectLevel.cs" />
     <Compile Include="Model\TableCompany.cs" />
     <Compile Include="Model\TableDangerousProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

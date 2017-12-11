@@ -105,6 +105,17 @@ namespace EmergencyCompany.Application
             return restult;
         }
 
+        public async Task<List<EntityDirectLevel>> GetCountyRiskLevelInfo()
+        {
+            var companyRep = GetRepositoryInstance<TableCompany>();
+
+            var listCompanyInfo = companyRep.FindAll();
+
+            var model = listCompanyInfo.GroupBy(x => x.CountyCode).Select(item => new EntityDirectLevel { CountyCode = item.Key, MinRiskLevel = item.Min(x => x.RiskLevel) }).ToList();
+
+            return model;
+        }
+
         /// <summary>
         /// 企业搜索分页
         /// </summary>
@@ -201,7 +212,7 @@ namespace EmergencyCompany.Application
         {
             var model = new TableCompany();
             model = Mapper.Map<EntityCompany, TableCompany>(entity);
-            model.Id = GetCompanyId();
+            model.Id = Utils.GetNewId();
             var companyRep = GetRepositoryInstance<TableCompany>();
             companyRep.Insert(model);
         }
@@ -243,11 +254,6 @@ namespace EmergencyCompany.Application
                 companyInfo.EmergencyPhone,
                 companyInfo.RiskLevel
             });
-        }
-
-        private string GetCompanyId()
-        {
-            return Utils.GetNewId();
         }
     }
 }

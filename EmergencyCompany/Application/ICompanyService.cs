@@ -24,6 +24,9 @@ namespace EmergencyCompany.Application
 
         Task<TableCompany> GetCompanyInfoByName(string companyName);
 
+
+        Task<List<EntityDirectLevel>> GetCountyRiskLevelInfo();
+
         Task<PageBase<TableCompany>> GetPageCompanyInfo(EntityCompanyPageQuery companyPageQuery);
     }
 }

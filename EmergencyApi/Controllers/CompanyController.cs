@@ -34,9 +34,21 @@ namespace EmergencyApi.Controllers
         public async Task<ResponseModel> AddCompanyInfo(EntityCompany entityCompany)
         {
             var result = ICompanyService.GetCompanyInfoByName(entityCompany.CompanyName);
-            if(result.Result!=null)  return Fail(ErrorCodeEnum.CompanyAlreadyExist);
+            if (result.Result != null) return Fail(ErrorCodeEnum.CompanyAlreadyExist);
             await ICompanyService.InsertCompanyInfo(entityCompany);
             return Success("保存成功");
+        }
+
+        /// <summary>
+        /// 根据区县企业风险等级信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, HttpOptions]
+        [Route("counties")]
+        public async Task<ResponseModel> GetCompanyInfo()
+        {
+            var result = await ICompanyService.GetCountyRiskLevelInfo();
+            return Success(result);
         }
 
         /// <summary>
