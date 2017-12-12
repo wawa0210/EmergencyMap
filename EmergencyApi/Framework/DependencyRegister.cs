@@ -1,6 +1,4 @@
-﻿using Autofac;
-using Autofac.Integration.WebApi;
-using EmergencyAccount.Application;
+﻿using EmergencyAccount.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
