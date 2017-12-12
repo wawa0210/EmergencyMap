@@ -101,5 +101,10 @@ namespace EmergencyAccount.Application
 
             return Mapper.Map<TableAccountManager, EntityAccountManager>(restult);
         }
+
+        public Task<bool> AddAccountInfo(EntityAccountNewManager entityAccountNew)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

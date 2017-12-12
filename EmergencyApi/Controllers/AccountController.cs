@@ -44,6 +44,18 @@ namespace EmergencyApi.Controllers
         /// 根据用户编号获得用户详细信息
         /// </summary>
         /// <returns></returns>
+        [HttpPost, HttpOptions]
+        [Route("")]
+        public ResponseModel AddAccountInfo(EntityAccountNewManager entityAccountNew)
+        {
+            var result = IAccountService.GetAccountManagerInfo(userId);
+            return Success(result);
+        }
+
+        /// <summary>
+        /// 根据用户编号获得用户详细信息
+        /// </summary>
+        /// <returns></returns>
         [HttpGet, HttpOptions]
         [Route("")]
         public async Task<ResponseModel> GetAccountInfo([FromUri]EntityAccountPageQuery entityAccountPageQuery)
