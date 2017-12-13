@@ -44,12 +44,36 @@ namespace EmergencyApi.Controllers
         /// 根据用户编号获得用户详细信息
         /// </summary>
         /// <returns></returns>
+        [HttpGet, HttpOptions]
+        [Route("query")]
+        public ResponseModel CheckAccountInfo(string userName)
+        {
+            if (string.IsNullOrEmpty(userName)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+            return Success(IAccountService.GetAccountManager(userName));
+        }
+
+        /// <summary>
+        /// 根据用户编号获得用户详细信息
+        /// </summary>
+        /// <returns></returns>
         [HttpPost, HttpOptions]
         [Route("")]
-        public ResponseModel AddAccountInfo(EntityAccountNewManager entityAccountNew)
+        public async Task<ResponseModel> AddAccountInfo(EntityAccountNewManager entityAccountNew)
         {
-            var result = IAccountService.GetAccountManagerInfo(userId);
+            var result = await IAccountService.AddAccountInfo(entityAccountNew);
             return Success(result);
+        }
+
+        /// <summary>
+        /// 根据用户编号获得用户详细信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, HttpOptions]
+        [Route("delete")]
+        public async Task<ResponseModel> DeleteAccountInfo(EntityAccountDelete entityAccountDelete)
+        {
+            await IAccountService.DeleteManager(entityAccountDelete.Id);
+            return Success("删除成功");
         }
 
         /// <summary>

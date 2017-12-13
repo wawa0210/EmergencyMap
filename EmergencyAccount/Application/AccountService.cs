@@ -38,11 +38,11 @@ namespace EmergencyAccount.Application
             //计算总数
             strSql.Append(@"        
                             SELECT  @totalCount = COUNT(1)
-                            FROM    dbo.T_Sys_Manager WITH ( NOLOCK ) ");
+                            FROM    dbo.T_Sys_Manager WITH ( NOLOCK ) where IsLock=0 ");
 
             if (!string.IsNullOrEmpty(entityAccountPageQuery.UserName))
             {
-                strSql.Append(" where  UserName like '%' + @userName +'%' ;");
+                strSql.Append(" and  UserName like '%' + @userName +'%' ;");
             }
 
             //分页信息
@@ -57,11 +57,11 @@ namespace EmergencyAccount.Application
                                    Tel ,
                                    IsLock ,
                                    Level ,
-                                   AddTime FROM dbo.T_Sys_Manager WITH(NOLOCK) ");
+                                   AddTime FROM dbo.T_Sys_Manager WITH(NOLOCK) where IsLock=0 ");
 
             if (!string.IsNullOrEmpty(entityAccountPageQuery.UserName))
             {
-                strSql.Append(" where  userName like '%' + @userName +'%' ");
+                strSql.Append(" and  userName like '%' + @userName +'%' ");
             }
             strSql.Append(@"
                                    ) AS a
@@ -102,9 +102,41 @@ namespace EmergencyAccount.Application
             return Mapper.Map<TableAccountManager, EntityAccountManager>(restult);
         }
 
-        public Task<bool> AddAccountInfo(EntityAccountNewManager entityAccountNew)
+        public async Task<bool> AddAccountInfo(EntityAccountNewManager entityAccountNew)
         {
-            throw new NotImplementedException();
+            var userSalt = Utils.GetCheckCode(6);
+            var managerInfo = new TableAccountManager
+            {
+                Id = Utils.GetNewId(),
+                UserSalt = userSalt,
+                Level = entityAccountNew.Level,
+                UserName = entityAccountNew.UserName,
+                UserPwd = DESEncrypt.Encrypt(entityAccountNew.UserPwd.Trim().Trim(), userSalt),
+                Tel = entityAccountNew.Tel,
+                IsLock = 0,
+                DeptId = 0,
+                RoleId = 0,
+                AddTime = DateTime.Now
+
+            };
+            var accountRep = GetRepositoryInstance<TableAccountManager>();
+            accountRep.Insert(managerInfo);
+
+            return true;
+        }
+
+        public async Task DeleteManager(string managerId)
+        {
+            var model = new TableAccountManager() {
+                Id = managerId,
+                IsLock = 1
+            };
+            var accountRep = GetRepositoryInstance<TableAccountManager>();
+
+            accountRep.Update<TableAccountManager>(model, companyInfo => new
+            {
+                companyInfo.IsLock
+            });
         }
     }
 }

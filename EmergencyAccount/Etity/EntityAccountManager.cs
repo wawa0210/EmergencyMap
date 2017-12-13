@@ -62,4 +62,10 @@ namespace EmergencyAccount.Etity
 
         public int Level { get; set; }
     }
+
+    public class EntityAccountDelete
+    {
+        [Required(ErrorMessage = "账户编号不能为空")]
+        public string Id { get; set; }
+    }
 }
