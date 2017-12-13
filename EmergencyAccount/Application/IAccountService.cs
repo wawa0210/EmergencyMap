@@ -1,4 +1,5 @@
 ﻿using EmergencyAccount.Etity;
+using EmergencyEntity.PageQuery;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace EmergencyAccount.Application
 
 
         EntityAccountManager GetAccountManagerInfo(string useId);
+
+        Task<bool> AddAccountInfo(EntityAccountNewManager entityAccountNew);
+
+        Task<PageBase<EntityAccountManager>> GetAccountManagerInfo(EntityAccountPageQuery entityAccountPageQuery);
 
         /// <summary>
         /// 校验登录密码是否正确
