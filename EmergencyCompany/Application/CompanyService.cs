@@ -17,6 +17,19 @@ namespace EmergencyCompany.Application
 {
     public class CompanyService : BaseAppService, ICompanyService
     {
+        public async Task DeleteCompanyInfo(string id)
+        {
+            var companyRep = GetRepositoryInstance<TableCompany>();
+
+            var strSql = "DELETE dbo.T_Company WHERE Id=@companyId";
+
+            var paras = new DynamicParameters(new
+            {
+                companyId = id
+            });
+            await companyRep.Connection.ExecuteAsync(strSql, paras);
+        }
+
         public async Task<List<TableCompany>> GetAllCompanyInfo()
         {
             var companyRep = GetRepositoryInstance<TableCompany>();

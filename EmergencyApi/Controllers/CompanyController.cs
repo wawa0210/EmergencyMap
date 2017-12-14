@@ -17,12 +17,15 @@ namespace EmergencyApi.Controllers
     {
         private ICompanyService ICompanyService { get; set; }
 
+        private IDangerousProductService IDangerousProductService { get; set; }
+
         /// <summary>
         /// 初始化(autofac 已经注入)
         /// </summary>
         public CompanyController()
         {
             ICompanyService = new CompanyService();
+            IDangerousProductService = new DangerousProductService();
         }
 
         /// <summary>
@@ -105,6 +108,21 @@ namespace EmergencyApi.Controllers
             return Success(result);
         }
 
+        /// <summary>
+        /// 删除企业信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete, HttpOptions]
+        [Route("{id}")]
+        public async Task<ResponseModel> DeleteCompanyInfo(string id)
+        {
+            if (string.IsNullOrEmpty(id)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+
+            await ICompanyService.DeleteCompanyInfo(id);
+            await IDangerousProductService.DeleteDangerousProduct(id);
+
+            return Success("删除成功");
+        }
 
         /// <summary>
         /// 根据搜索获得企业信息

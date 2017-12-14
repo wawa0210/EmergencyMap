@@ -11,6 +11,8 @@ namespace EmergencyCompany.Application
     public interface IDangerousProductService
     {
         Task<List<EntityDangerousProduct>> GetDangerousProduct(string companyId);
+
+        Task DeleteDangerousProduct(string companyId);
         Task<EntityDangerousProduct> GetDangerousProductInfo(string id);
 
         Task AddDangerousProduct(EntityDangerousProduct entityDangerous);

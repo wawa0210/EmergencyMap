@@ -22,6 +22,8 @@ namespace EmergencyCompany.Application
 
         Task<TableCompany> GetCompanyInfo(string id);
 
+        Task DeleteCompanyInfo(string id);
+
         Task<TableCompany> GetCompanyInfoByName(string companyName);
 
 

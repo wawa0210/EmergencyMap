@@ -25,6 +25,18 @@ namespace EmergencyCompany.Application
             dangerousProductRep.Insert(model);
         }
 
+        public async Task DeleteDangerousProduct(string companyId)
+        {
+            var dangerousProductRep = GetRepositoryInstance<TableDangerousProduct>();
+            var strSql = "DELETE T_DangerousProduct WHERE CompanyId=@companyId";
+
+            var paras = new DynamicParameters(new
+            {
+                companyId = companyId
+            });
+            await dangerousProductRep.Connection.ExecuteAsync(strSql, paras);
+        }
+
         public async Task EditDangerousProduct(EntityDangerousProduct entityDangerous)
         {
             var model = Mapper.Map<EntityDangerousProduct, TableDangerousProduct>(entityDangerous);
@@ -61,7 +73,7 @@ namespace EmergencyCompany.Application
         {
             var dangerousProductRep = GetRepositoryInstance<TableDangerousProduct>();
             var restult = dangerousProductRep.Find(x => x.Id == id);
-            var model = Mapper.Map<TableDangerousProduct,EntityDangerousProduct>(restult);
+            var model = Mapper.Map<TableDangerousProduct, EntityDangerousProduct>(restult);
             return model;
         }
 
