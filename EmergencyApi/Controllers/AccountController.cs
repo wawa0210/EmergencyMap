@@ -72,6 +72,7 @@ namespace EmergencyApi.Controllers
         [Route("delete")]
         public async Task<ResponseModel> DeleteAccountInfo(EntityAccountDelete entityAccountDelete)
         {
+            if (entityAccountDelete.Id == "14E1952B-F674-4EE9-BD18-D4EB2F71084B") return Fail(ErrorCodeEnum.SuperManagerNotCanDelete);
             await IAccountService.DeleteManager(entityAccountDelete.Id);
             return Success("删除成功");
         }

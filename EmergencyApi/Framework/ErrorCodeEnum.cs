@@ -51,7 +51,10 @@ namespace EmergencyApi.Framework
         UserPwdCheckFaild = 8007,
 
         [Description("企业已存在")]
-        CompanyAlreadyExist = 8008
+        CompanyAlreadyExist = 8008,
+
+        [Description("超级管理员不能删除")]
+        SuperManagerNotCanDelete = 8009
         #endregion
 
     }
