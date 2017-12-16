@@ -127,7 +127,8 @@ namespace EmergencyAccount.Application
 
         public async Task DeleteManager(string managerId)
         {
-            var model = new TableAccountManager() {
+            var model = new TableAccountManager()
+            {
                 Id = managerId,
                 IsLock = 1
             };
@@ -136,6 +137,30 @@ namespace EmergencyAccount.Application
             accountRep.Update<TableAccountManager>(model, companyInfo => new
             {
                 companyInfo.IsLock
+            });
+        }
+
+
+        /// <summary>
+        /// 更新密码
+        /// </summary>
+        /// <param name="entityAccountPwd"></param>
+        public async Task UpdateAccountPwd(EntityAccountPwd entityAccountPwd)
+        {
+            var userSalt = Utils.GetCheckCode(6);
+            var model = new TableAccountManager()
+            {
+                Id = entityAccountPwd.Id,
+                UserPwd = DESEncrypt.Encrypt(entityAccountPwd.UserPwd.Trim().Trim(), userSalt),
+                UserSalt = userSalt
+            };
+            var accountRep = GetRepositoryInstance<TableAccountManager>();
+
+            accountRep.Update<TableAccountManager>(model, managerInfo => new
+            {
+                managerInfo.UserPwd,
+                managerInfo.UserSalt
+
             });
         }
     }

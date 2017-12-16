@@ -65,6 +65,18 @@ namespace EmergencyApi.Controllers
         }
 
         /// <summary>
+        /// 更新密码
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut, HttpOptions]
+        [Route("pwd")]
+        public async Task<ResponseModel> UpdateAccountPwd(EntityAccountPwd entityAccountPwd)
+        {
+            await IAccountService.UpdateAccountPwd(entityAccountPwd);
+            return Success("更新成功");
+        }
+
+        /// <summary>
         /// 根据用户编号获得用户详细信息
         /// </summary>
         /// <returns></returns>

@@ -20,6 +20,8 @@ namespace EmergencyAccount.Application
 
         Task<bool> AddAccountInfo(EntityAccountNewManager entityAccountNew);
 
+        Task UpdateAccountPwd(EntityAccountPwd entityAccountPwd);
+
         Task<PageBase<EntityAccountManager>> GetAccountManagerInfo(EntityAccountPageQuery entityAccountPageQuery);
 
         /// <summary>
