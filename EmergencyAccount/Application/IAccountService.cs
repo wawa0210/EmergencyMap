@@ -22,6 +22,8 @@ namespace EmergencyAccount.Application
 
         Task UpdateAccountPwd(EntityAccountPwd entityAccountPwd);
 
+        Task UpdateAccount(EntityAccount entityAccount);
+
         Task<PageBase<EntityAccountManager>> GetAccountManagerInfo(EntityAccountPageQuery entityAccountPageQuery);
 
         /// <summary>

@@ -54,6 +54,7 @@
     <Compile Include="Application\AccountService.cs" />
     <Compile Include="Application\IAccountService.cs" />
     <Compile Include="Data\EmergencyContext.cs" />
+    <Compile Include="Etity\EntityAccount.cs" />
     <Compile Include="Etity\EntityAccountManager.cs" />
     <Compile Include="Etity\EntityAccountPageQuery.cs" />
     <Compile Include="Etity\EntityAccountPwd.cs" />

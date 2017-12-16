@@ -163,5 +163,24 @@ namespace EmergencyAccount.Application
 
             });
         }
+
+        public async Task UpdateAccount(EntityAccount entityAccount)
+        {
+            var model = new TableAccountManager()
+            {
+                Id = entityAccount.Id,
+                Tel= entityAccount.Tel,
+                RealName = entityAccount.RealName,
+                Level = entityAccount.Level
+            };
+            var accountRep = GetRepositoryInstance<TableAccountManager>();
+
+            accountRep.Update<TableAccountManager>(model, managerInfo => new
+            {
+                managerInfo.Tel,
+                managerInfo.RealName,
+                managerInfo.Level
+            });
+        }
     }
 }

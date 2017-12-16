@@ -77,6 +77,19 @@ namespace EmergencyApi.Controllers
         }
 
         /// <summary>
+        /// 账户信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut, HttpOptions]
+        [Route("")]
+        public async Task<ResponseModel> UpdateAccount(EntityAccount entityAccount)
+        {
+            if (entityAccount.Id == "14E1952B-F674-4EE9-BD18-D4EB2F71084B") return Fail(ErrorCodeEnum.SuperManagerNotCanDelete);
+            await IAccountService.UpdateAccount(entityAccount);
+            return Success("更新成功");
+        }
+        
+        /// <summary>
         /// 根据用户编号获得用户详细信息
         /// </summary>
         /// <returns></returns>
