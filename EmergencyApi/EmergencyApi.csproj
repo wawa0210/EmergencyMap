@@ -116,6 +116,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DangerousProductController.cs" />
+    <Compile Include="Framework\CorsHandler.cs" />
     <Compile Include="Framework\DependencyRegister.cs" />
     <Compile Include="Framework\EmergencyException.cs" />
     <Compile Include="Framework\EmergencyPrincipal.cs" />

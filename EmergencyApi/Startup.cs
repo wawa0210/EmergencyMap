@@ -35,8 +35,8 @@ namespace EmergencyApi
 
             // 使用attribute路由规则 
             config.MapHttpAttributeRoutes();
-            
 
+            config.MessageHandlers.Add(new CorsHandler());
             config.Filters.Add(new WebApiPowerAttribute());
             config.Filters.Add(new WebApiExceptionAttribute());
             config.Filters.Add(new ValidationActionFilter());
