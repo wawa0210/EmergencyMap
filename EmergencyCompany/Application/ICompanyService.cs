@@ -16,7 +16,7 @@ namespace EmergencyCompany.Application
 
         Task<List<TableCompany>> GetCompanyInfo(EntityCompanySearch entityCompany);
 
-        Task InsertCompanyInfo(EntityCompany entity);
+        Task InsertCompanyInfoSync(EntityCompany entity);
 
         Task UpdateCompanyInfo(EntityCompany entity);
 

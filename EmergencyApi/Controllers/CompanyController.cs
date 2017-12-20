@@ -29,7 +29,7 @@ namespace EmergencyApi.Controllers
         }
 
         /// <summary>
-        /// 根据搜索获得企业信息
+        /// 新增企业信息
         /// </summary>
         /// <returns></returns>
         [HttpPost, HttpOptions]
@@ -38,7 +38,7 @@ namespace EmergencyApi.Controllers
         {
             var result = ICompanyService.GetCompanyInfoByName(entityCompany.CompanyName);
             if (result.Result != null) return Fail(ErrorCodeEnum.CompanyAlreadyExist);
-            await ICompanyService.InsertCompanyInfo(entityCompany);
+            await ICompanyService.InsertCompanyInfoSync(entityCompany);
             return Success("保存成功");
         }
 

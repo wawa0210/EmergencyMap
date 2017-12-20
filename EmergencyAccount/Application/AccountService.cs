@@ -18,7 +18,7 @@ namespace EmergencyAccount.Application
 {
     public class AccountService : BaseAppService, IAccountService
     {
-
+        public AccountService() { }
         public bool CheckLoginInfo(string inputPwd, string salt, string dbPwd)
         {
             var userPwd = DESEncrypt.Encrypt(inputPwd, salt);
@@ -94,10 +94,10 @@ namespace EmergencyAccount.Application
             return Mapper.Map<TableAccountManager, EntityAccountManager>(restult);
         }
 
-        public EntityAccountManager GetAccountManagerInfo(string useId)
+        public async Task<EntityAccountManager> GetAccountManagerInfo(string useId)
         {
             var accountRep = GetRepositoryInstance<TableAccountManager>();
-            var restult = accountRep.Find(x => x.Id == useId);
+            var restult = await accountRep.FindAsync(x => x.Id == useId);
 
             return Mapper.Map<TableAccountManager, EntityAccountManager>(restult);
         }
@@ -169,7 +169,7 @@ namespace EmergencyAccount.Application
             var model = new TableAccountManager()
             {
                 Id = entityAccount.Id,
-                Tel= entityAccount.Tel,
+                Tel = entityAccount.Tel,
                 RealName = entityAccount.RealName,
                 Level = entityAccount.Level
             };

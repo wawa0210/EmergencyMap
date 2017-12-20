@@ -221,13 +221,13 @@ namespace EmergencyCompany.Application
         /// 插入行业信息
         /// </summary>
         /// <param name="entity"></param>
-        public async Task InsertCompanyInfo(EntityCompany entity)
+        public async Task InsertCompanyInfoSync(EntityCompany entity)
         {
             var model = new TableCompany();
             model = Mapper.Map<EntityCompany, TableCompany>(entity);
             model.Id = Utils.GetNewId();
             var companyRep = GetRepositoryInstance<TableCompany>();
-            companyRep.Insert(model);
+            await companyRep.InsertAsync(model);
         }
 
         public async Task UpdateCompanyInfo(EntityCompany entity)

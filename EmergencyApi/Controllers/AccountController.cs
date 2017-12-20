@@ -33,10 +33,10 @@ namespace EmergencyApi.Controllers
         /// <returns></returns>
         [HttpGet, HttpOptions]
         [Route("{userId}")]
-        public ResponseModel GetAccountInfo(string userId)
+        public async Task<ResponseModel> GetAccountInfo(string userId)
         {
             if (string.IsNullOrEmpty(userId)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
-            var result = IAccountService.GetAccountManagerInfo(userId);
+            var result = await IAccountService.GetAccountManagerInfo(userId);
             return Success(result);
         }
 
@@ -88,7 +88,7 @@ namespace EmergencyApi.Controllers
             await IAccountService.UpdateAccount(entityAccount);
             return Success("更新成功");
         }
-        
+
         /// <summary>
         /// 根据用户编号获得用户详细信息
         /// </summary>

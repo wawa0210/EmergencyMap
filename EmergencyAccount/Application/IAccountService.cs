@@ -14,7 +14,7 @@ namespace EmergencyAccount.Application
         EntityAccountManager GetAccountManager(string userName);
 
 
-        EntityAccountManager GetAccountManagerInfo(string useId);
+        Task<EntityAccountManager> GetAccountManagerInfo(string useId);
 
         Task DeleteManager(string managerId);
 

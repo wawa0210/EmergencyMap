@@ -1,4 +1,5 @@
 ﻿using EmergencyData;
+using EmergencyData.MicroOrm;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,7 +28,7 @@ namespace EmergencyBaseService
         /// </summary>
         /// <typeparam name="T">Repository对象类型</typeparam>
         /// <returns></returns>
-        protected virtual SqlDapperRepository<T> GetRepositoryInstance<T>(string connStr = null) where T : class, new()
+        protected virtual DapperRepository<T> GetRepositoryInstance<T>(string connStr = null) where T : class, new()
         {
             //获取程序集名+类名，作为CallContext的key
             var type = typeof(T);
@@ -36,7 +37,7 @@ namespace EmergencyBaseService
             System.Diagnostics.Debug.WriteLine(typeName);
 
             //保证在同一个HTTP请求下，对象是单例的,优先从CallContext中取
-            var repository = CallContext.GetData(typeName) as SqlDapperRepository<T>;
+            var repository = CallContext.GetData(typeName) as DapperRepository<T>;
 
             if (repository == null)
             {
@@ -46,7 +47,7 @@ namespace EmergencyBaseService
                         connStr = WebConfigSetting.GetInstance.DbConnectionString;
                     _connection = new SqlConnection(connStr);
                 }
-                repository = new SqlDapperRepository<T>(_connection);
+                repository = new DapperRepository<T>(_connection);
                 CallContext.SetData(typeName, repository);
             }
             return repository;
