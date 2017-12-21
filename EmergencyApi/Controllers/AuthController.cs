@@ -23,9 +23,9 @@ namespace EmergencyApi.Controllers
         /// <summary>
         /// 初始化(autofac 已经注入)
         /// </summary>
-        public AuthController()
+        public AuthController(IAccountService _iAccountService)
         {
-            IAccountService = new AccountService();
+            IAccountService = _iAccountService;
         }
 
         /// <summary>

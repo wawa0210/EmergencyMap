@@ -22,10 +22,10 @@ namespace EmergencyApi.Controllers
         /// <summary>
         /// 初始化(autofac 已经注入)
         /// </summary>
-        public CompanyController()
+        public CompanyController(ICompanyService _iCompanyService, IDangerousProductService _iDangerousProductService)
         {
-            ICompanyService = new CompanyService();
-            IDangerousProductService = new DangerousProductService();
+            ICompanyService = _iCompanyService;
+            IDangerousProductService = _iDangerousProductService;
         }
 
         /// <summary>

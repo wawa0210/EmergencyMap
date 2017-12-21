@@ -24,9 +24,9 @@ namespace EmergencyApi.Controllers
         /// <summary>
         /// 初始化(autofac 已经注入)
         /// </summary>
-        public DangerousProductController()
+        public DangerousProductController(IDangerousProductService _iDangerousProductService)
         {
-            IDangerousProductService = new DangerousProductService();
+            IDangerousProductService = _iDangerousProductService;
         }
 
         /// <summary>

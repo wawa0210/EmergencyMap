@@ -2,6 +2,7 @@
 using Autofac.Integration.WebApi;
 using EmergencyAccount.Application;
 using EmergencyApi.Framework;
+using EmergencyCompany.Application;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
@@ -55,7 +56,9 @@ namespace EmergencyApi
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
-            builder.Register(c => new AccountService()).As<IAccountService>().InstancePerRequest();
+            builder.RegisterType<AccountService>().As<IAccountService>().AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterType<CompanyService>().As<ICompanyService>().AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterType<DangerousProductService>().As<IDangerousProductService>().AsImplementedInterfaces().InstancePerRequest();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             app.UseAutofacMiddleware(container);

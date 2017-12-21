@@ -26,7 +26,7 @@ namespace EmergencyApi.Framework
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // Register a logger service to be used by the controller and middleware.
-            builder.Register(c => new Logger()).As<ILogger>().AsImplementedInterfaces();
+            //builder.Register(c => new Logger()).As<ILogger>().AsImplementedInterfaces();
 
             // Autofac will add middleware to IAppBuilder in the order registered.
             // The middleware will execute in the order added to IAppBuilder.
