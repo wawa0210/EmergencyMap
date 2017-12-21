@@ -1,4 +1,7 @@
-﻿using EmergencyApi.Framework;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+using EmergencyAccount.Application;
+using EmergencyApi.Framework;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
@@ -8,6 +11,7 @@ using Owin;
 using System;
 using System.Linq;
 using System.Net.Http.Formatting;
+using System.Reflection;
 using System.Web.Http;
 
 [assembly: OwinStartup(typeof(EmergencyApi.Startup))]
@@ -35,7 +39,6 @@ namespace EmergencyApi
 
             // 使用attribute路由规则 
             config.MapHttpAttributeRoutes();
-
             config.MessageHandlers.Add(new CorsHandler());
             config.Filters.Add(new WebApiPowerAttribute());
             config.Filters.Add(new WebApiExceptionAttribute());
@@ -48,6 +51,15 @@ namespace EmergencyApi
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
+            //autofac
+            var builder = new ContainerBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterWebApiFilterProvider(config);
+            builder.Register(c => new AccountService()).As<IAccountService>().InstancePerRequest();
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
 
             app.UseWebApi(config);
         }

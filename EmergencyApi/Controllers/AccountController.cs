@@ -22,9 +22,9 @@ namespace EmergencyApi.Controllers
         /// <summary>
         /// 初始化(autofac 已经注入)
         /// </summary>
-        public AccountController()
+        public AccountController(IAccountService _iAccountService)
         {
-            IAccountService = new AccountService();
+            IAccountService = _iAccountService;
         }
 
         /// <summary>
