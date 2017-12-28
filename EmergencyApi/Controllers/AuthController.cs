@@ -7,9 +7,11 @@ using EmergencyApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -49,6 +51,31 @@ namespace EmergencyApi.Controllers
                 token = AesHelper.Encrypt(JsonConvert.SerializeObject(result)),
                 userInfo = result
             });
+        }
+
+
+        /// <summary>
+        /// 获得token 登录
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("image")]
+        public async Task<HttpResponseMessage> GetAccountImg()
+        {
+            var imgPath = Directory.GetCurrentDirectory();
+
+            var client = new WebClient();
+            var result = await client.DownloadDataTaskAsync("http://pic1.sc.chinaz.com/files/pic/pic9/201712/bpic4898.jpg");
+
+            //从图片中读取流
+            var resp = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(result)
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+
+            return resp;
         }
     }
 }

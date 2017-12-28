@@ -1,5 +1,7 @@
 ﻿using EmergencyData;
 using EmergencyData.MicroOrm;
+using EmergencyData.MicroOrm.SqlGenerator;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -45,9 +47,9 @@ namespace EmergencyBaseService
                 {
                     if (string.IsNullOrEmpty(connStr))
                         connStr = WebConfigSetting.GetInstance.DbConnectionString;
-                    _connection = new SqlConnection(connStr);
+                    _connection = new MySqlConnection(connStr);
                 }
-                repository = new DapperRepository<T>(_connection);
+                repository = new DapperRepository<T>(_connection, ESqlConnector.MySql);
                 CallContext.SetData(typeName, repository);
             }
             return repository;
