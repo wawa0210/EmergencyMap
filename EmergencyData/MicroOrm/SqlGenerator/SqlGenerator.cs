@@ -404,8 +404,8 @@ namespace EmergencyData.MicroOrm.SqlGenerator
             //Projection function
             Func<PropertyMetadata, string> projectionFunction =
                 p => !string.IsNullOrEmpty(p.Alias)
-                    ? string.Format("{0}.{1} AS {2}", tableName, p.ColumnName, p.Name)
-                    : string.Format("{0}.{1}", tableName, p.ColumnName);
+                    ? string.Format("{0} AS {1}", p.ColumnName, p.Name)
+                    : string.Format("{0}", p.ColumnName);
 
             return string.Join(", ", properties.Select(projectionFunction));
         }

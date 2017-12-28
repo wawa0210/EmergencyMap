@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EmergencyCompany.Model
 {
-    [Table("[T_Company]")]
+    [Table("T_Company")]
     public class TableCompany
     {
 

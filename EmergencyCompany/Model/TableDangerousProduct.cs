@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EmergencyCompany.Model
 {
-    [Table("[T_DangerousProduct]")]
+    [Table("T_DangerousProduct")]
     public class TableDangerousProduct
     {
         public TableDangerousProduct()

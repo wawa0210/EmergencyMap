@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EmergencyAccount.Model
 {
-    [Table("[T_Sys_Manager]")]
+    [Table("T_Sys_Manager")]
     public class TableAccountManager
     {
         #region 私有成员
