@@ -224,6 +224,8 @@ namespace EmergencyCompany.Application
         public async Task InsertCompanyInfoSync(EntityCompany entity)
         {
             var model = new TableCompany();
+            entity.FoundedTime = entity.FoundedTime ?? DateTime.Now;
+            entity.IssureTime = entity.IssureTime ?? DateTime.Now;
             model = Mapper.Map<EntityCompany, TableCompany>(entity);
             model.Id = Utils.GetNewId();
             var companyRep = GetRepositoryInstance<TableCompany>();
