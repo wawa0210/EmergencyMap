@@ -120,7 +120,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 行业
         /// </summary>
-        [Required(ErrorMessage = "所属行业不能为空")]
         public string Industry
         {
             get; set;
@@ -129,7 +128,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 经济类型
         /// </summary>
-        [Required(ErrorMessage = "经济类型不能为空")]
         public string Economy
         {
             get; set;
@@ -155,7 +153,7 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 成立时间
         /// </summary>
-        public DateTime FoundedTime
+        public DateTime? FoundedTime
         {
             get; set;
         }
@@ -163,7 +161,7 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 注册时间
         /// </summary>
-        public DateTime IssureTime
+        public DateTime? IssureTime
         {
             get; set;
         }
@@ -180,7 +178,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 法人名称
         /// </summary>
-        [Required(ErrorMessage = "法人名称不能为空")]
         public string Owner
         {
             get; set;
@@ -205,7 +202,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 分管安全负责人
         /// </summary>
-        [Required(ErrorMessage = "分管安全负责人不能为空")]
         public string ChiefSafeyName
         {
             get; set;
@@ -214,7 +210,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 分管安全负责人电话
         /// </summary>
-        [Required(ErrorMessage = "分管安全负责人电话不能为空")]
         public string ChiefSafeyPhone
         {
             get; set;
@@ -223,7 +218,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 安全生产管理机构负责人
         /// </summary>
-        [Required(ErrorMessage = "安全生产管理机构负责人不能为空")]
         public string ViceSafeyName
         {
             get; set;
@@ -232,7 +226,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 安全生产管理机构负责人电话
         /// </summary>
-        [Required(ErrorMessage = "安全生产管理机构负责人电话不能为空")]
         public string ViceSafeyPhone
         {
             get; set;
@@ -241,7 +234,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 安全值班电话
         /// </summary>
-        [Required(ErrorMessage = "安全值班电话不能为空")]
         public string OnDutyPhone
         {
             get; set;
@@ -250,7 +242,6 @@ namespace EmergencyCompany.Entity
         /// <summary>
         /// 应急资讯电话
         /// </summary>
-        [Required(ErrorMessage = "应急资讯电话不能为空")]
         public string EmergencyPhone
         {
             get; set;

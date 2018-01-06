@@ -11,7 +11,7 @@ namespace EmergencyAccount.Etity
     public class EntityAccountManager
     {
         public string Id { get; set; }
-        public int RoleId { get; set; }
+        public string RoleId { get; set; }
         public int DeptId { get; set; }
         public string UserName { get; set; }
 
