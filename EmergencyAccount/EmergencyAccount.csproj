@@ -53,13 +53,20 @@
   <ItemGroup>
     <Compile Include="Application\AccountService.cs" />
     <Compile Include="Application\IAccountService.cs" />
+    <Compile Include="Application\IRoleService.cs" />
+    <Compile Include="Application\RoleService.cs" />
     <Compile Include="Data\EmergencyContext.cs" />
     <Compile Include="Etity\EntityAccount.cs" />
     <Compile Include="Etity\EntityAccountManager.cs" />
     <Compile Include="Etity\EntityAccountPageQuery.cs" />
     <Compile Include="Etity\EntityAccountPwd.cs" />
     <Compile Include="Etity\EntityLoginModel.cs" />
+    <Compile Include="Etity\EntityRole.cs" />
+    <Compile Include="Etity\EntityRolePageQuery.cs" />
+    <Compile Include="Model\TableSysPermission.cs" />
+    <Compile Include="Model\TableSysRole.cs" />
     <Compile Include="Model\TableAccountManager.cs" />
+    <Compile Include="Model\TableSysMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

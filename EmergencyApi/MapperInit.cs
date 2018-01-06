@@ -103,6 +103,13 @@ namespace EmergencyApi
                .ForMember(x => x.Memo, y => y.MapFrom(z => z.Memo))
                .ForMember(x => x.Status, y => y.MapFrom(z => z.Status))
                .ForAllOtherMembers(x => x.Ignore());
+
+            cfg.CreateMap<TableSysRole, EntityRole>()
+             .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+             .ForMember(x => x.RoleName, y => y.MapFrom(z => z.RoleName))
+             .ForMember(x => x.CreateTime, y => y.MapFrom(z => z.CreateTime))
+             .ForAllOtherMembers(x => x.Ignore());
+                
             }
             );
         }
