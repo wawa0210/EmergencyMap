@@ -58,6 +58,7 @@ namespace EmergencyApi
             builder.RegisterWebApiFilterProvider(config);
             builder.RegisterType<AccountService>().As<IAccountService>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<CompanyService>().As<ICompanyService>().AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterType<RoleService>().As<IRoleService>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<DangerousProductService>().As<IDangerousProductService>().AsImplementedInterfaces().InstancePerRequest();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
