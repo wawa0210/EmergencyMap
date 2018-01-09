@@ -93,12 +93,14 @@ namespace EmergencyApi.Controllers
         /// 根据用户编号获得用户详细信息
         /// </summary>
         /// <returns></returns>
-        [HttpPost, HttpOptions]
-        [Route("delete")]
-        public async Task<ResponseModel> DeleteAccountInfo(EntityAccountDelete entityAccountDelete)
+        [HttpDelete, HttpOptions]
+        [Route("{id}")]
+        public async Task<ResponseModel> DeleteAccountInfo(string id)
         {
-            if (entityAccountDelete.Id == "14E1952B-F674-4EE9-BD18-D4EB2F71084B") return Fail(ErrorCodeEnum.SuperManagerNotCanDelete);
-            await IAccountService.DeleteManager(entityAccountDelete.Id);
+            if (string.IsNullOrEmpty(id)) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+
+            if (id == "14E1952B-F674-4EE9-BD18-D4EB2F71084B") return Fail(ErrorCodeEnum.SuperManagerNotCanDelete);
+            await IAccountService.DeleteManager(id);
             return Success("删除成功");
         }
 
