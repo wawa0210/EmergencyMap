@@ -115,7 +115,7 @@ namespace EmergencyAccount.Application
                 Tel = entityAccountNew.Tel,
                 IsLock = 0,
                 DeptId = 0,
-                RoleId = 0,
+                RoleId = "0",
                 AddTime = DateTime.Now
 
             };
