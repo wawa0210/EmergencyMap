@@ -107,7 +107,7 @@ namespace EmergencyApi
             cfg.CreateMap<TableSysRole, EntityRole>()
              .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
              .ForMember(x => x.RoleName, y => y.MapFrom(z => z.RoleName))
-             .ForMember(x => x.CreateTime, y => y.MapFrom(z => z.CreateTime))
+             //.ForMember(x => x.CreateTime, y => y.MapFrom(z => z.CreateTime))
              .ForAllOtherMembers(x => x.Ignore());
                 
             }
